@@ -7,9 +7,10 @@ const _=require("lodash");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
+require('dotenv').config();
 
 //mongoose.connect('mongodb://127.0.0.1:27017/todolistDB');      //connection to mongoDB
-mongoose.connect('mongodb+srv://admin-arty:Test123@cluster0.569qwxi.mongodb.net/todolistDB');
+mongoose.connect(process.env.DB_URI);
 const itemsSchema={                                //mongoose schema
     name:String
 };
